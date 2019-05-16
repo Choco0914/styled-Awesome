@@ -8,17 +8,18 @@ createGlobalStyle`
   }
 `;
 
+const awesomeCard = css`
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+`;
+
 class App extends Component {
   render() {
     return (
       <Container>
-        <Button success>Hello</Button>
-        <Button danger rotationTime={1}>
-          Hello
-        </Button>
-        <Anchor as="a" href="http://google.com">
-          Go to Google
-        </Anchor>
+        <Input placeholder="Hello" />
       </Container>
     );
   }
@@ -30,34 +31,11 @@ const Container = styled.div`
   background-color: pink;
 `;
 
-const Button = styled.button`
-  border-radius: 50px;
-  padding: 5px;
-  min-width: 120px;
-  color: white;
-  font-weight: 600;
-  -webkit-appearance: none;
+const Input = styled.input.attrs({
+  required: true
+})`
   border: none;
-  cursor: pointer;
-  &:active {
-    transform: scale(0.98);
-  }
-  &:active,
-  &:focus {
-    outline: none;
-  }
-  background-color: ${props => (props.danger ? "#e74c3c" : "#2ecc71")};
-  ${props => {
-    if (props.danger) {
-      return css`
-        animation: ${rotation} ${props.rotationTime}s linear infinite;
-      `;
-    }
-  }}
-`;
-
-const Anchor = styled(Button)`
-  text-decoration: none;
+  ${awesomeCard};
 `;
 
 const rotation = keyframes`
